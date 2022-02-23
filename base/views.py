@@ -16,13 +16,13 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getProductWatches(request):
-    products = Product.objects.filter(category__contains='watches')
+    products = Product.objects.filter(category='watches')
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getProductWatchesSold(request):
-    products = Product.objects.filter(category__contains='watchesSold')
+    products = Product.objects.filter(category='watchesSold')
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
