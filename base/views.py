@@ -21,6 +21,12 @@ def getProductWatches(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def getProductWatchesSold(request):
+    products = Product.objects.filter(category__contains='watchesSold')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def getWatch(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductsSerializer(product, many=False)
