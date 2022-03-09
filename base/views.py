@@ -3,13 +3,20 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Product
+from .models import Product, Order, OrderItem, ShippingAddress
 from .serializer import ProductsSerializer
-from django.views.decorators.csrf import csrf_exempt
+import stripe
+from django.views.decorators.csrf importcsrf_exempt
 from django.conf import settings
+from functools import reduce
 
+
+stripe.api_key = settings.STRIPE_PRIVATE_KEY
 
 # Create your views here.
+# For the reduce function
+def prod(x, y):
+    return x + y
 
 def getRoutes(request):
     return JsonResponse('Rob Diamond API', safe=False)
