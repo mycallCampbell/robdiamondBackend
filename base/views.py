@@ -6,7 +6,7 @@ from rest_framework import status
 from .models import Product, Order, OrderItem, ShippingAddress
 from .serializer import ProductsSerializer
 import stripe
-from django.views.decorators.csrf importcsrf_exempt
+from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from functools import reduce
 
