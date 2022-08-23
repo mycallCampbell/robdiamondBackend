@@ -8,6 +8,7 @@ from .serializer import ProductsSerializer
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
+from django.core.mail import send_mail, BadHeaderError
 from functools import reduce
 
 
@@ -113,3 +114,28 @@ def addOrderItems(request):
 
 
     return HttpResponse(status=200)
+
+@api_view(["POST"])
+def sendEmail(request):
+    # Convert List to String to comply with django Send_mail module
+    s = [
+        request.data["firstName"],
+        request.data["sureName"],
+        request.data["phone"],
+        request.data["email"],
+        request.data["message"],
+    ]
+    listToString = " ".join(map(str, s))
+    # print(listToString)
+
+    try:
+        send_mail(
+            "Contact Enquiry",
+            listToString,
+            "contact@robdiamond.co.uk",
+            ["contact@robdiamond.co.uk"],
+            fail_silently=False,
+        )
+    except BadHeaderError:
+        return HttpResponse("Invalid header found.")
+    return Response("Success")
