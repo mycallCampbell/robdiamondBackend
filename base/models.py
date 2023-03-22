@@ -65,6 +65,7 @@ class Blog(models.Model):
     subTitle2 = models.CharField(max_length=200, null=True, blank=True)
     caption1 = models.CharField(max_length=200, null=True, blank=True)
     caption2 = models.CharField(max_length=200, null=True, blank=True)
+    captchaPhrase = models.TextField(null=True, blank=True)
     description1 = models.TextField(null=True, blank=True)
     description2 = models.TextField(null=True, blank=True)
     description3 = models.TextField(null=True, blank=True)
