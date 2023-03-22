@@ -56,6 +56,31 @@ class Product(models.Model):
         return self.name
 
 
+class Blog(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    title = models.CharField(max_length=200, null=True, blank=True)
+    subTitle1 = models.CharField(max_length=200, null=True, blank=True)
+    subTitle2 = models.CharField(max_length=200, null=True, blank=True)
+    caption1 = models.CharField(max_length=200, null=True, blank=True)
+    caption2 = models.CharField(max_length=200, null=True, blank=True)
+    description1 = models.TextField(null=True, blank=True)
+    description2 = models.TextField(null=True, blank=True)
+    description3 = models.TextField(null=True, blank=True)
+    description4 = models.TextField(null=True, blank=True)
+    description5 = models.TextField(null=True, blank=True)
+    description6 = models.TextField(null=True, blank=True)
+    description7 = models.TextField(null=True, blank=True)
+    description8 = models.TextField(null=True, blank=True)
+    description9 = models.TextField(null=True, blank=True)
+    description10 = models.TextField(null=True, blank=True)
+    description11 = models.TextField(null=True, blank=True)
+    createAt = models.DateTimeField(auto_now_add=True)
+    _id = AutoField(primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.title
+
+
 class Review(models.Model):
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)

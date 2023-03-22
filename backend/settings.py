@@ -1,8 +1,8 @@
 
+import os
+from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
-from pathlib import Path
-import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +17,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '139.59.170.75', 'www.robdiamond-be.co.uk', 'robdiamond-be.co.uk']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '139.59.170.75',
+                 'www.robdiamond-be.co.uk', 'robdiamond-be.co.uk']
 
 
 # Application definition
@@ -80,7 +81,7 @@ if DEBUG:
         }
     }
 
-else: 
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -111,15 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = os.environ.get("EMAIL_PORT")
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-RECIPIENT_ADDRESS = os.environ.get("RECIPIENT_ADDRESS")
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -140,7 +132,6 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 CORS_ALLOW_ALL_ORIGINS = True
-
 
 
 # Default primary key field type
