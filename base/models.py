@@ -74,6 +74,7 @@ class Blog(models.Model):
     description9 = models.TextField(null=True, blank=True)
     description10 = models.TextField(null=True, blank=True)
     description11 = models.TextField(null=True, blank=True)
+    category = models.CharField(max_length=200, null=True, blank=True)
     createAt = models.DateTimeField(auto_now_add=True)
     _id = AutoField(primary_key=True, editable=False)
 

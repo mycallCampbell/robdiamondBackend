@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Product, Order, OrderItem, ShippingAddress
+from .models import Product, Blog, Order, OrderItem, ShippingAddress
 from .serializer import ProductsSerializer
 import stripe
 from django.views.decorators.csrf import csrf_exempt
@@ -16,11 +16,15 @@ stripe.api_key = settings.STRIPE_PRIVATE_KEY
 
 # Create your views here.
 # For the reduce function
+
+
 def prod(x, y):
     return x + y
 
+
 def getRoutes(request):
     return JsonResponse('Rob Diamond API', safe=False)
+
 
 @api_view(['GET'])
 def getProductWatches(request):
@@ -28,17 +32,27 @@ def getProductWatches(request):
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+def getProductWatches(request):
+    products = Blog.objects.filter(category='blogs')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
 @api_view(['GET'])
 def getProductWatchesSold(request):
     products = Product.objects.filter(category='watchesSold')
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
+
 @api_view(['GET'])
 def getWatch(request, pk):
     product = Product.objects.get(_id=pk)
     serializer = ProductsSerializer(product, many=False)
     return Response(serializer.data)
+
 
 @api_view(['POST'])
 def getClientSecret(request):
@@ -49,9 +63,8 @@ def getClientSecret(request):
         product = Product.objects.get(_id=i['_id'])
         productPriceList.append(product.price)
     productTotal = reduce(prod, productPriceList)
-    global totalProduct 
+    global totalProduct
     totalProduct = round((productTotal * 100) + 299.00)
-
 
     try:
         intent = stripe.PaymentIntent.create(
@@ -102,7 +115,7 @@ def addOrderItems(request):
 
             OrderItem.objects.create(
                 product=product,
-                order= order,
+                order=order,
                 price=i["price"],
                 name=product.name,
                 size=i["size"],
@@ -112,8 +125,8 @@ def addOrderItems(request):
             product.countInStock -= 1
             product.save()
 
-
     return HttpResponse(status=200)
+
 
 @api_view(["POST"])
 def sendEmail(request):
