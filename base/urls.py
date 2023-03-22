@@ -8,4 +8,5 @@ urlpatterns  = [
     path('watch/<str:pk>', views.getWatch, name='watch'),
     path("client-secret/", views.getClientSecret, name="client-secret"),
     path("addorder/", views.addOrderItems, name='addorder'),
+    path("sendEmail/", views.sendEmail, name="sendEmail"),
 ]

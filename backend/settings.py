@@ -111,6 +111,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+RECIPIENT_ADDRESS = os.environ.get("RECIPIENT_ADDRESS")
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
