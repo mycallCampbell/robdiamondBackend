@@ -58,6 +58,8 @@ class Product(models.Model):
 
 class Blog(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    imageRef1 = models.CharField(max_length=200, null=True, blank=True)
+    imageRef2 = models.CharField(max_length=200, null=True, blank=True)
     title = models.CharField(max_length=200, null=True, blank=True)
     subTitle1 = models.CharField(max_length=200, null=True, blank=True)
     subTitle2 = models.CharField(max_length=200, null=True, blank=True)
