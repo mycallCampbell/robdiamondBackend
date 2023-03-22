@@ -54,6 +54,13 @@ def getWatch(request, pk):
     return Response(serializer.data)
 
 
+@api_view(['GET'])
+def getBlog(request, pk):
+    blog = Blog.objects.get(_id=pk)
+    serializer = BlogsSerializer(blog, many=False)
+    return Response(serializer.data)
+
+
 @api_view(['POST'])
 def getClientSecret(request):
 
