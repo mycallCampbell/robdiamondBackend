@@ -8,6 +8,7 @@ from django.db.models.fields import AutoField
 class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     title = models.CharField(max_length=200, null=True, blank=True)
+    refModel = models.CharField(max_length=200, null=True, blank=True)
     price = models.IntegerField(null=True, blank=True, default=0)
     category = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=200, null=True, blank=True)
@@ -48,7 +49,7 @@ class Product(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self):
-        return str(self.ref + self.model)
+        return str(self.refModel)
 
 
 class Blog(models.Model):
