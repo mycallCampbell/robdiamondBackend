@@ -41,6 +41,41 @@ def getProductModelDateJust(request):
 
 
 @api_view(['GET'])
+def getProductModelDayDate(request):
+    products = Product.objects.filter(model='daydate')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductModelSkyDweller(request):
+    products = Product.objects.filter(model='skydweller')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductModelDaytona(request):
+    products = Product.objects.filter(model='daytona')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductModelGMTMASTERII(request):
+    products = Product.objects.filter(model='GMT-MasterII')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+def getProductModelSubmariner(request):
+    products = Product.objects.filter(model='submariner')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def getBlogs(request):
     blogs = Blog.objects.filter(category='blogs')
     serializer = BlogsSerializer(blogs, many=True)
