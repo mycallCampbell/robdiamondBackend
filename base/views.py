@@ -34,6 +34,13 @@ def getProductWatches(request):
 
 
 @api_view(['GET'])
+def getProductModelDateJust(request):
+    products = Product.objects.filter(model='datejust')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
 def getBlogs(request):
     blogs = Blog.objects.filter(category='blogs')
     serializer = BlogsSerializer(blogs, many=True)
