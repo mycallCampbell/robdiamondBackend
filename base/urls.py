@@ -17,6 +17,7 @@ urlpatterns = [
     path('watchesModelGMT-MasterII/', views.getProductModelGMTMASTERII,
          name='product-modelGMT-MasterII'),
     path('blogs/', views.getBlogs, name='blogs'),
+    path('search/', views.getSearch, name='search'),
     path('watchesSold/', views.getProductWatchesSold, name='product-watchesSold'),
     path('watch/<str:pk>', views.getWatch, name='watch'),
     path('blog/<str:pk>', views.getBlog, name='blog'),
