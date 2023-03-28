@@ -29,7 +29,7 @@ def getRoutes(request):
 @api_view(['GET'])
 def getSearch(request):
     search = Search.objects.get(name=['name'])
-    serializer = SearchSerializer(search, many=True)
+    serializer = SearchSerializer(search, many=False)
     return Response(serializer.data)
 
 
