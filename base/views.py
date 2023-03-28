@@ -28,7 +28,7 @@ def getRoutes(request):
 
 @api_view(['GET'])
 def getSearch(request):
-    search = Search.objects.filter(name=['name'])
+    search = Search.objects.get(name=['name'])
     serializer = SearchSerializer(search, many=True)
     return Response(serializer.data)
 
