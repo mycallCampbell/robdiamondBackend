@@ -9,6 +9,7 @@ class Product(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     category = models.CharField(max_length=200, null=True, blank=True)
     title = models.CharField(max_length=200, null=True, blank=True)
+    nickName = models.CharField(max_length=200, null=True, blank=True)
     strap = models.CharField(max_length=200, null=True, blank=True)
     dial = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=200, null=True, blank=True)

@@ -10,9 +10,17 @@ from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
 from django.core.mail import send_mail, BadHeaderError
 from functools import reduce
+from betfairlightweight import APIClient
+from betfairlightweight import filters
+from betfairlightweight import StreamListener
+from betfairlightweight import resources
 
 
 stripe.api_key = settings.STRIPE_PRIVATE_KEY
+
+client = APIClient('oTY1y8QkfuVZeGY4', 'your_app_key_cert_path')
+username = 'beambell10'
+pasword = 'Jellybean1!'
 
 # Create your views here.
 # For the reduce function
@@ -208,3 +216,8 @@ def sendEmail(request):
     except BadHeaderError:
         return HttpResponse("Invalid header found.")
     return Response("Success")
+
+
+@api_view(["POST"])
+def sendEmail(request):
+    client = APIClient('your_app_key', 'your_app_key_cert_path')
