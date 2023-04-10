@@ -91,7 +91,7 @@ class Blog(models.Model):
     _id = AutoField(primary_key=True, editable=False)
 
     def __str__(self):
-        return self.title
+        return self.blogTitle
 
 
 class Search(models.Model):
