@@ -50,6 +50,8 @@ class Product(models.Model):
 
 class Blog(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    goLive = models.CharField(max_length=200, null=True, blank=True)
+    imageTitle = models.CharField(max_length=200, null=True, blank=True)
     imageRef1 = models.CharField(max_length=200, null=True, blank=True)
     imageRef2 = models.CharField(max_length=200, null=True, blank=True)
     imageRef3 = models.CharField(max_length=200, null=True, blank=True)
@@ -58,7 +60,7 @@ class Blog(models.Model):
     imageRef6 = models.CharField(max_length=200, null=True, blank=True)
     imageRef7 = models.CharField(max_length=200, null=True, blank=True)
     minuteRead = models.IntegerField(null=True, blank=True, default=0)
-    title = models.CharField(max_length=200, null=True, blank=True)
+    blogTitle = models.CharField(max_length=200, null=True, blank=True)
     subTitle1 = models.CharField(max_length=200, null=True, blank=True)
     subTitle2 = models.CharField(max_length=200, null=True, blank=True)
     subTitle3 = models.CharField(max_length=200, null=True, blank=True)
@@ -85,7 +87,6 @@ class Blog(models.Model):
     description9 = models.TextField(null=True, blank=True)
     description10 = models.TextField(null=True, blank=True)
     description11 = models.TextField(null=True, blank=True)
-    category = models.CharField(max_length=200, null=True, blank=True)
     createAt = models.DateTimeField(auto_now_add=True)
     _id = AutoField(primary_key=True, editable=False)
 

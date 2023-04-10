@@ -85,7 +85,7 @@ def getProductModelSubmariner(request):
 
 @api_view(['GET'])
 def getBlogs(request):
-    blogs = Blog.objects.filter(category='blogs')
+    blogs = Blog.objects.filter(goLive='true')
     serializer = BlogsSerializer(blogs, many=True)
     return Response(serializer.data)
 
