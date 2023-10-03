@@ -3,8 +3,8 @@ from django.http import JsonResponse, HttpResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Product, Blog, Search, Order, OrderItem, ShippingAddress
-from .serializer import ProductsSerializer, BlogsSerializer, SearchSerializer
+from .models import Product, Review, Blog, Search, Order, OrderItem, ShippingAddress
+from .serializer import ProductsSerializer, ReviewsSerializer, BlogsSerializer, SearchSerializer
 import stripe
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
@@ -38,6 +38,12 @@ def getSearch(request):
 def getProductWatches(request):
     products = Product.objects.filter(category='watches')
     serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getReviews(request):
+    reviews = Review.objects.filter(name='review')
+    serializer = ReviewsSerializer(reviews, many=True)
     return Response(serializer.data)
 
 
@@ -85,6 +91,12 @@ def getProductModelSubmariner(request):
 @api_view(['GET'])
 def getProductModelAquanaut(request):
     products = Product.objects.filter(model='aquanaut')
+    serializer = ProductsSerializer(products, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getProductModelNautilus(request):
+    products = Product.objects.filter(model='nautilus')
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
