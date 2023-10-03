@@ -82,11 +82,10 @@ def getProductModelSubmariner(request):
     serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
-def getBlogs(request):
-    blogs = Blog.objects.filter(goLive='true')
-    serializer = BlogsSerializer(blogs, many=True)
+def getProductModelAquanaut(request):
+    products = Product.objects.filter(model='aquanaut')
+    serializer = ProductsSerializer(products, many=True)
     return Response(serializer.data)
 
 
@@ -108,6 +107,12 @@ def getWatch(request, pk):
 def getBlog(request, pk):
     blog = Blog.objects.get(_id=pk)
     serializer = BlogsSerializer(blog, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getBlogs(request):
+    blogs = Blog.objects.filter(goLive='true')
+    serializer = BlogsSerializer(blogs, many=True)
     return Response(serializer.data)
 
 

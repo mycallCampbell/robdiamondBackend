@@ -16,6 +16,7 @@ urlpatterns = [
          name='product-modelSubmariner'),
     path('watchesModelGMT-MasterII/', views.getProductModelGMTMASTERII,
          name='product-modelGMT-MasterII'),
+    path('watchesModelAquanaut/', views.getProductModelAquanaut, name='product-modelAquanaut'),
     path('blogs/', views.getBlogs, name='blogs'),
     path('search/', views.getSearch, name='search'),
     path('watchesSold/', views.getProductWatchesSold, name='product-watchesSold'),
