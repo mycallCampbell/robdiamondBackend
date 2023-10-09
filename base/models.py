@@ -14,12 +14,7 @@ class Product(models.Model):
     dial = models.CharField(max_length=200, null=True, blank=True)
     model = models.CharField(max_length=200, null=True, blank=True)
     ref = models.CharField(max_length=200, null=True, blank=True)
-    price1 = models.IntegerField(null=True, blank=True, default=0)
-    year1 = models.CharField(max_length=200, null=True, blank=True)
-    price2 = models.IntegerField(null=True, blank=True, default=0)
-    year2 = models.CharField(max_length=200, null=True, blank=True)
-    price3 = models.IntegerField(null=True, blank=True, default=0)
-    year3 = models.CharField(max_length=200, null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True, default=0)
     boxAndPapers = models.CharField(max_length=200, null=True, blank=True)
     condition = models.CharField(max_length=200, null=True, blank=True)
     warranty = models.CharField(max_length=200, null=True, blank=True)
@@ -107,10 +102,11 @@ class Review(models.Model):
     name = models.CharField(max_length=200, null=True, blank=True)
     rating = models.IntegerField(null=True, blank=True, default=0)
     comment = models.TextField(null=True, blank=True)
+    date = models.TextField(null=True, blank=True)
     _id = AutoField(primary_key=True, editable=False)
 
     def __str__(self):
-        return str(self.rating)
+        return str(self.name)
 
 
 class Order(models.Model):
