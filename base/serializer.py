@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Review, Blog, Search
+from .models import Product, Review, Blog
 
 
 class ProductsSerializer(serializers.ModelSerializer):
@@ -19,9 +19,5 @@ class BlogsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class SearchSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Search
-        fields = "__all__"
     
 
